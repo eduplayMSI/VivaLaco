@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>VivaLaço - Seu apoio diário</title>
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#f5f0eb">
+    <meta name="description" content="VivaLaço – aplicativo de apoio cognitivo para pessoas com Alzheimer inicial. Rotina diária, lembretes, familiares e suporte emocional.">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="icon" type="image/webp" href="assets/icons/icon-72x72.png">
+</head>
+<body>
+    <div id="app" class="app-container">
+        <!-- Cabeçalho dinâmico -->
+        <header id="main-header" class="main-header">
+            <button id="btn-voltar" class="icon-btn back-btn" aria-label="Voltar" style="display: none;">←</button>
+            <h1 id="app-title">VivaLaço</h1>
+            <div class="header-actions">
+                <button id="btn-menu" class="icon-btn menu-btn" aria-label="Menu">☰</button>
+                <button id="btn-install" class="icon-btn install-btn" style="display: none;">📲 Instalar</button>
+            </div>
+        </header>
+
+        <!-- Menu rápido (mobile) -->
+        <nav id="quick-menu" class="quick-menu" hidden>
+            <ul>
+                <li><button data-nav="agora">🏠 Agora</button></li>
+                <li><button data-nav="rotina">📋 Rotina</button></li>
+                <li><button data-nav="familia">👪 Família</button></li>
+                <li><button data-nav="historia">📖 Minha História</button></li>
+                <li><button data-nav="confuso">🆘 Estou confuso</button></li>
+                <li><button data-nav="cuidador">🔧 Cuidador</button></li>
+                <li><button id="btn-alto-contraste">🌓 Alto Contraste</button></li>
+                <li><button id="btn-tamanho-fonte">🔠 Tamanho da Fonte</button></li>
+                <li><button id="btn-leitura-tela" class="tts-screen-btn">🔊 Ouvir tudo</button></li>
+            </ul>
+        </nav>
+
+        <!-- Conteúdo principal - rotas dinâmicas -->
+        <main id="main-content" class="main-content"></main>
+
+        <!-- Barra inferior de navegação -->
+        <footer class="bottom-nav">
+    <button data-nav="agora" class="nav-btn" aria-label="Agora">
+        <img src="assets/icons/agora-normal.webp" alt="Agora" class="nav-icon" width="48" height="48">
+    </button>
+    <button data-nav="rotina" class="nav-btn" aria-label="Rotina">
+        <img src="assets/icons/rotina-normal.webp" alt="Rotina" class="nav-icon" width="48" height="48">
+    </button>
+    <button data-nav="familia" class="nav-btn" aria-label="Família">
+        <img src="assets/icons/familia-normal.webp" alt="Família" class="nav-icon" width="48" height="48">
+    </button>
+    <button data-nav="historia" class="nav-btn" aria-label="História">
+        <img src="assets/icons/historia-normal.webp" alt="História" class="nav-icon" width="48" height="48">
+    </button>
+    <button data-nav="confuso" class="nav-btn" aria-label="Ajuda">
+        <img src="assets/icons/confuso-normal.webp" alt="Ajuda" class="nav-icon" width="48" height="48">
+    </button>
+    <button data-nav="cuidador" class="nav-btn" aria-label="Cuidador">
+        <img src="assets/icons/cuidador-normal.webp" alt="Cuidador" class="nav-icon" width="48" height="48">
+    </button>
+    </footer>
+    </div>
+
+    <!-- Diálogo de ajuste de fonte -->
+    <div id="font-dialog" class="dialog" hidden>
+        <div class="dialog-content">
+            <h3>Tamanho da fonte</h3>
+            <div class="font-size-options">
+                <button data-font="small">Pequeno</button>
+                <button data-font="medium">Médio</button>
+                <button data-font="large">Grande</button>
+                <button data-font="xlarge">Extra Grande</button>
+            </div>
+            <button id="close-font-dialog" class="close-btn">Fechar</button>
+        </div>
+    </div>
+
+    <!-- Áudio de fundo (escondido) -->
+    <audio id="bg-music" src="assets/sounds/musica-fundo.mp3" loop preload="auto" style="display:none;"></audio>
+
+    <!-- Emoji overlay para saudações -->
+    <div id="emoji-overlay" style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 2000; font-size: 4rem; opacity: 0; transition: opacity 0.5s ease; pointer-events: none; text-align: center;">😊</div>
+
+    <!-- Scripts (defer para não bloquear renderização) -->
+    <script defer src="js/db.js"></script>
+    <script defer src="js/media-utils.js"></script>
+    <script defer src="js/voice.js"></script>
+    <script defer src="js/saudacoes.js"></script>
+    <script defer src="js/accessibility.js"></script>
+    <script defer src="js/agora.js"></script>
+    <script defer src="js/rotina.js"></script>
+    <script defer src="js/familia.js"></script>
+    <script defer src="js/historia.js"></script>
+    <script defer src="js/confuso.js"></script>
+    <script defer src="js/cuidador.js"></script>
+    <script defer src="js/app.js"></script>
+</body>
+</html>
