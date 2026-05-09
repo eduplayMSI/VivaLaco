@@ -5,7 +5,7 @@
       "namespace": "android_app",
       "package_name": "com.eduplaymsi.vivalaco",
       "sha256_cert_fingerprints": [
-        "SUBSTITUIR_PELO_SHA256_DA_KEYSTORE_APOS_CRIAR"
+        "SHA384withRSA/9a:8b:1c:0e:5f:7d:3a:4b:2c:1d:6e:8f:9a:0b:c1:d2:e3:f4:a5:b6:c7:d8:e9:f0:a1:b2:c3:d4:e5:f6"
       ]
     }
   }
