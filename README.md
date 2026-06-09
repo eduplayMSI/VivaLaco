@@ -103,3 +103,124 @@ O **VivaLaço** nasceu da necessidade de oferecer uma ferramenta digital simples
 ## Arquitetura e Estrutura de Arquivos
 
 O projeto segue uma arquitetura **offline-first** com modularização por funcionalidade:
+
+VivaLaco/
+├── index.html
+├── manifest.json
+├── service-worker.js
+├── assets/
+│ ├── fonts/ # Nunito (WOFF2)
+│ ├── icons/ # Ícones PWA, microfone, audição, conclusão
+│ ├── sounds/ # musica-fundo.mp3 (opcional)
+│ └── wallpaper-*.jpg
+├── css/
+│ └── styles.css # Temas, responsividade, alto contraste
+└── js/
+├── app.js # Roteamento, navegação, PWA install
+├── db.js # IndexedDB wrapper
+├── accessibility.js # Alto contraste, tamanho fonte, leitura
+├── voice.js # TTS, STT, comandos de voz
+├── media-utils.js # Gravação áudio, seleção de imagem
+├── saudacoes.js # Saudação personalizada + emoji
+├── agora.js
+├── rotina.js
+├── familia.js
+├── historia.js
+├── confuso.js
+└── cuidador.js
+
+text
+
+**Fluxo de dados:**
+- Toda gravação de áudio e upload de imagem é convertida para `Blob` e persistida no IndexedDB.
+- O Service Worker cacheia apenas assets estáticos (HTML, CSS, JS, ícones, wallpapers).
+- As telas são renderizadas dinamicamente via `innerHTML` e funções globais (`window.renderXxx`).
+
+---
+
+## Como Usar
+
+### Para o Paciente
+
+1. **Instalar o app:** No celular, acesse o link, clique em “Adicionar à tela inicial” (ou “Instalar app”) – funciona como um app nativo.
+2. **Navegar pelos botões inferiores:**
+   - 🏠 **Agora** – veja o que fazer agora.
+   - 📋 **Rotina** – veja todas as atividades do dia.
+   - 👪 **Família** – ouça recados dos familiares.
+   - 📖 **Minha História** – relembre histórias e veja fotos.
+   - 🆘 **Ajuda** – se sentir confuso, ative a música calmante.
+3. **Usar o microfone flutuante** para dar comandos de voz.
+4. **Ajustar acessibilidade** pelo menu ☰ (alto contraste, tamanho da fonte, ler tudo).
+
+### Para o Cuidador
+
+1. Acesse a tela **🔧 Cuidador** (último ícone da barra inferior).
+2. Preencha os **dados do paciente** (nome, cidade, profissão, foto).
+3. **Adicione familiares:** nome, relação, foto, grave um áudio (ex.: "Sua esposa Maria").
+4. **Crie a rotina diária:** atividades, emojis/imagens, grave instruções (até 30s cada).
+5. **Adicione histórias de vida:** título, descrição, grave um áudio (até 5 min) e selecione até 20 imagens.
+6. **Ative a música de fundo** se desejar (checkbox persistente).
+7. Ao final, o paciente pode usar o app normalmente. Todas as configurações ficam salvas no dispositivo.
+
+---
+
+## Instalação e Execução Local
+
+```bash
+# Clone o repositório
+git clone https://github.com/eduplaymsi/VivaLaco.git
+
+# Entre no diretório
+cd VivaLaco
+
+# Inicie um servidor local (ex.: usando Python)
+python -m http.server 8000
+
+# Ou use o Live Server do VS Code
+Abra http://localhost:8000 no navegador.
+Para testar como PWA, é recomendado usar HTTPS (local pode usar ngrok ou serve com certificado autoassinado).
+
+Build e Deploy
+O projeto é totalmente estático – não requer build. Para fazer deploy no GitHub Pages:
+
+Crie um repositório no GitHub.
+
+Faça o push do código para a branch main.
+
+No repositório, acesse Settings > Pages e selecione a branch main (pasta /).
+
+O site estará disponível em https://<seu-usuario>.github.io/<repositorio>/.
+
+O Service Worker e o manifest.json devem estar na raiz para funcionamento correto do PWA.
+
+Roadmap de Melhorias
+Prazo	Melhoria
+Curto	🎯 Otimizar LCP (pré-carregar imagem da primeira atividade)
+Curto	🔄 Substituir música calmante por arquivo local e cacheá-la
+Curto	📦 Adicionar música de fundo ao cache do Service Worker
+Médio	🖼️ Converter wallpapers e ícones para WebP
+Médio	🔁 Funcionalidade de exportar/importar dados (backup)
+Médio	📱 Melhorar suporte à síntese de voz no iOS
+Longo	☁️ Sincronização cloud opcional (Firebase) para compartilhar configurações entre dispositivos
+Longo	🧪 Testes end-to-end (Playwright/Cypress)
+Contribuição
+Contribuições são muito bem-vindas! Sinta-se à vontade para:
+
+Reportar bugs ou sugerir melhorias via Issues.
+
+Enviar pull requests com correções ou novas funcionalidades (preferencialmente seguindo a mesma filosofia leve e offline-first).
+
+Antes de contribuir, verifique o roadmap e as issues abertas.
+
+Licença
+Este projeto está licenciado sob a MIT License – veja o arquivo LICENSE para detalhes.
+
+Contato e Suporte
+Demo online: https://eduplaymsi.github.io/VivaLaco/
+
+Autor: eduplaymsi
+
+Problemas técnicos: Abra uma issue neste repositório.
+
+Desenvolvido com 💙 para pessoas que precisam de um apoio diário e seus cuidadores.
+VivaLaço – Seu laço de carinho e memória.
